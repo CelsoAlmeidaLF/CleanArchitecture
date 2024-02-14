@@ -4,14 +4,10 @@ using Systekna.Infrasctruture.Repository;
 
 namespace Systekna.Infrasctruture
 {
-    public class DbRepositoryCommand : DbContext, IDbRepositoryCommand
+    public class DbRepositoryCommand<Entity> : DbContext, IDbRepositoryCommand<Entity> where Entity : EntityCommand, new()
     {
-        public DbRepositoryCommand(DbContextOptions options) : base(options)
-        {          
-        }
-
-        public IEnumerable<EntityCommand> GetAll(EntityCommand entityCommand)
-            => new List<EntityCommand>();
+        public IEnumerable<Entity> GetAll(Entity entity)
+            => new List<Entity>() { entity };
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
             => base.OnConfiguring(optionsBuilder);

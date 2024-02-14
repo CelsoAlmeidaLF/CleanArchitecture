@@ -7,6 +7,9 @@
         public readonly DateTime? DtBloqueio = dtBloqueio;
 
         public static implicit operator Bloqueio(bool ativo)
-            => new Bloqueio(ativo, ativo == true ? DateTime.Now : null);
+            => new Bloqueio(ativo, ativo == true ? null : DateTime.Now);
+
+        public override string ToString() 
+            => FlAtivo == true ? "ATIVO" : $"BLOQUEADO {DtBloqueio}";
     }
 }

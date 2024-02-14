@@ -8,6 +8,6 @@ namespace Systekna.Core.Entity.Base
         public DateTime? DtCriação { get; set; } = DateTime.Now;
         public DateTime DtAlteração { get; set; } = DateTime.Now;
         public Bloqueio Bloqueio { get; set; } = true;
-        public string UsuarioResponsavel { get; set; } = Environment.UserName;
+        public UsuarioLogado UsuarioResponsavel { get; set; } = Environment.UserName;
     }
 }

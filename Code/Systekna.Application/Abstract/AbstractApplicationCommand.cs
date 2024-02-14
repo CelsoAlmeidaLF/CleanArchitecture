@@ -3,11 +3,11 @@ using Systekna.Infrasctruture.Repository;
 
 namespace Systekna.Commands
 {
-    public abstract class AbstractApplicationCommand(IDbRepositoryCommand db) 
-        : IApplicationCommand
+    public abstract class AbstractApplicationCommand<Entity>(IDbRepositoryCommand<Entity> db) 
+        : IApplicationCommand<Entity> where Entity : EntityCommand ,new()
     {
-        private readonly IDbRepositoryCommand _db = db;
-        public virtual IEnumerable<EntityCommand> GetAll(EntityCommand entity) 
+        private readonly IDbRepositoryCommand<Entity> _db = db;
+        public virtual IEnumerable<Entity> GetAll(Entity entity) 
             => _db.GetAll(entity);
     }
 }

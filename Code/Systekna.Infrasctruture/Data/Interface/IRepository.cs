@@ -1,12 +1,10 @@
 ﻿using Systekna.Core.Entity;
+using Systekna.Core.Entity.Base;
 
 namespace Systekna.Infrasctruture
 {
-    public interface IRepository
+    public interface IRepository<Entity> where Entity : EntityBase, new()
     {
-        /// <summary>
-        /// Consulta lista no banco de dados.
-        /// </summary>
-        IEnumerable<EntityCommand> GetAll(EntityCommand entityCommand);
+        IEnumerable<Entity> GetAll(Entity entity);
     }
 }
