@@ -8,11 +8,9 @@ namespace Systekna.Querys
     namespace Base
     {
         internal abstract class ConsultaApplicationQueryBase<Entity>(IDbRepositoryCommand<Entity> dbRepository, Entity entity) 
-            : IConsultaQuery<IDbRepositoryCommand<Entity>, Entity> 
-            where Entity : EntityCommand, new()
+            : IConsultaQuery<Entity> where Entity : EntityCommand, new()
         {
-            public IDbRepositoryCommand<Entity> DbRepository => dbRepository;
-            public List<Entity> Execute() => DbRepository.GetAll(entity).ToList();
+            public List<Entity> Execute() => dbRepository.GetAll(entity).ToList();
         }
     }
 
