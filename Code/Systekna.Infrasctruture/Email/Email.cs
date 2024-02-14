@@ -1,5 +1,5 @@
 ﻿namespace Systekna.Infrasctruture.Email;
 
-public interface IEmail
+public class Email : IEmail
 {
 }
